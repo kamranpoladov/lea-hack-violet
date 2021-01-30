@@ -1,3 +1,4 @@
 export const QUERY_KEYS = {
-  TEST: 'test'
+  TEST: 'test',
+  CURRENT_LOCATION: 'current-location'
 } as const;

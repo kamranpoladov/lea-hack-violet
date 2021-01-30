@@ -1,4 +1,4 @@
-import { useGetTest } from '../services';
+import { useGetTest } from '../../services';
 
 const TestComponent = () => {
   const { data: test, isFetching } = useGetTest();
