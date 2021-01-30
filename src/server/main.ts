@@ -1,16 +1,24 @@
+import { readFileSync } from 'fs';
+import * as https from 'https';
+import cors from 'cors';
+
 import express from 'express';
-import controllers from './routes';
-import bodyParser from 'body-parser';
 import { log } from 'debug';
 
 const app = express();
 const port = process.env.PORT || 5000;
 
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+app.use(cors());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
-app.use(controllers);
+// Localhost self-signed HTTPS certificate
+// https://stackoverflow.com/a/42298344/6539857
+const httpsOptions = {
+  key: readFileSync('./security/key.pem'),
+  cert: readFileSync('./security/cert.pem')
+};
 
-app.listen(port, () => {
+https.createServer(httpsOptions, app).listen(port, () => {
   log(`Listening on ${port}...`);
 });

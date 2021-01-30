@@ -36,7 +36,7 @@
     "react-hooks/exhaustive-deps": "warn",
     "@typescript-eslint/no-empty-function": "error",
     "@typescript-eslint/no-unused-vars": [
-      "error",
+      "warn",
       { "ignoreRestSiblings": true }
     ],
     "react/prop-types": "off",
