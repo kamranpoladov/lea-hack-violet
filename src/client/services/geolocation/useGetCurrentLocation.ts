@@ -1,6 +1,11 @@
 import { useQuery } from 'react-query';
 import { QUERY_KEYS } from '../../constants';
-import { getCurrentGeolocation } from '../../utils';
+
+async function getCurrentGeolocation(): Promise<GeolocationPosition> {
+  return new Promise((resolve, reject) => {
+    navigator.geolocation.getCurrentPosition(resolve, reject);
+  });
+}
 
 export const useGetCurrentLocation = () =>
   useQuery(QUERY_KEYS.CURRENT_LOCATION, () => getCurrentGeolocation());
