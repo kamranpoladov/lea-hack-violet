@@ -1,11 +1,14 @@
 import React from 'react';
+import { Router } from 'react-router-dom';
 import { QueryClientProvider } from 'react-query';
 
-import MapComponent from './components/MapComponent';
-import { queryClient } from './utils';
+import { history, queryClient } from './utils';
+import { Root } from './Root';
 
 export const App = () => (
   <QueryClientProvider client={queryClient}>
-    <MapComponent />
+    <Router history={history}>
+      <Root />
+    </Router>
   </QueryClientProvider>
 );
