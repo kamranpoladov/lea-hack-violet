@@ -7,9 +7,15 @@ export enum HostTags {
   WIFI = 'WiFi'
 }
 
+export enum Gender {
+  M,
+  F
+}
+
 export type Host = {
   name: string;
   description: string;
   tags: HostTags[];
   location: LatLngLiteral;
+  gender: Gender;
 };

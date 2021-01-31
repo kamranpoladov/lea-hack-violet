@@ -8,10 +8,10 @@ import {
   Box
 } from '@material-ui/core';
 import { useCalculateDistance } from '../hooks';
-import { HostProfileIcon } from './HostProfileIcon';
 import { useState } from 'react';
 import { HostCardOverview } from './HostCardOverview';
 import { HostCardFull } from './HostCardFull';
+import { useRandomProfilePicture } from '../hooks/useRandomProfilePicture';
 
 type HostCardProps = {
   host: Host;
@@ -30,7 +30,9 @@ const useStyles = makeStyles(theme =>
       position: 'absolute',
       borderRadius: '10px',
       zIndex: 1,
-      cursor: 'pointer'
+      cursor: 'pointer',
+      display: 'flex',
+      justifyContent: 'center'
     }
   })
 );
@@ -41,6 +43,8 @@ export const HostCard = ({ host }: HostCardProps) => {
   const [isCollapsed, setIsCollapsed] = useState(false);
 
   const distance = useCalculateDistance(host.location);
+
+  const HostProfileIcon = useRandomProfilePicture();
 
   const handleCollapse = () => {
     setIsCollapsed(prev => !prev);

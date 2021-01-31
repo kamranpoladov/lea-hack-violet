@@ -1,7 +1,7 @@
 import faker from 'faker';
 import { LoremIpsum } from 'lorem-ipsum';
 import { rand } from '../../../../server/utils';
-import { Host } from '../../../../types';
+import { Gender, Host } from '../../../../types';
 import { useRandomTags } from './useRandomTags';
 
 export const useMockHosts = (amount: number) => {
@@ -28,7 +28,8 @@ export const useMockHosts = (amount: number) => {
           lat: rand(50.869, 50.8699),
           lng: rand(4.7, 4.79)
         },
-        tags: hostTags[i]
+        tags: hostTags[i],
+        gender: Math.random() > 0.5 ? Gender.M : Gender.F
       };
       return host;
     });

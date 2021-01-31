@@ -1,4 +1,4 @@
-export const HostProfileIcon = () => (
+export const Bun = () => (
   <svg
     width="131"
     height="99"
