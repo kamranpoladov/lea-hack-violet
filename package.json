@@ -1,5 +1,4 @@
 {
-  "homepage": "http://kamranpoladov.github.io/lea-hack-violet",
   "name": "lea-hack-violet",
   "version": "1.0.0",
   "repository": "git@github.com:kamranpoladov/lea-hack-violet.git",
@@ -14,9 +13,7 @@
     "test:lint": "eslint src/ --ext .jsx,.js,.ts,.tsx --color",
     "test:prettier": "prettier --check \"./{src,types,scripts}/**/*.{js,jsx,json,ts,tsx,scss}\"",
     "fix:lint": "eslint src/ --ext .jsx,.js,.ts,.tsx --color --fix",
-    "fix:prettier": "prettier --write \"./{src,types,scripts}/**/*.{js,jsx,json,ts,tsx,scss}\"",
-    "predeploy": "npm run client:build",
-    "deploy": "gh-pages -d build"
+    "fix:prettier": "prettier --write \"./{src,types,scripts}/**/*.{js,jsx,json,ts,tsx,scss}\""
   },
   "dependencies": {
     "@googlemaps/google-maps-services-js": "^3.1.16",
