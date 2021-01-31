@@ -1,5 +1,5 @@
 import { Route, Switch } from 'react-router-dom';
-import { LocationMask, Map } from './components';
+import { LocationMask } from './components';
 import { ROUTES } from './constants';
 
 export const Root = () => (

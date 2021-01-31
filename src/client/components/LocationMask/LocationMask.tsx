@@ -3,11 +3,12 @@ import {
   LatLngLiteral,
   TravelMode
 } from '@googlemaps/google-maps-services-js';
-import { DirectionsRenderer, DirectionsService } from '@react-google-maps/api';
-import React, { useState } from 'react';
+import { DirectionsRenderer } from '@react-google-maps/api';
+import React, { memo, useState } from 'react';
 import { Map } from '../Map';
+import { useDirections } from './useDirections';
 
-export const LocationMask = () => {
+const LocationMask = () => {
   const [origin, setOrigin] = useState<LatLngLiteral>({
     lat: 40.40560396103984,
     lng: 49.86648147740897
@@ -16,26 +17,21 @@ export const LocationMask = () => {
     lat: 40.367947274759885,
     lng: 49.82485359459066
   });
-  const [travelMode, setTravelMode] = useState(
-    TravelMode.driving.toUpperCase()
+  const [travelMode, setTravelMode] = useState<TravelMode>(TravelMode.driving);
+
+  const { data: directions, isFetching } = useDirections(
+    origin,
+    destination,
+    travelMode
   );
-  const [directions, setDirections] = useState<DirectionsResponse>();
+
+  if (!directions || isFetching) return null;
 
   return (
     <Map>
-      {
-        /*destination && origin && travelMode && */ <DirectionsService
-          // required
-          options={{
-            destination,
-            origin,
-            travelMode
-          }}
-          callback={result => result.status === 'OK' && setDirections(result)}
-        />
-      }
-
-      {directions && <DirectionsRenderer options={{ directions }} />}
+      <DirectionsRenderer options={{ directions }} />
     </Map>
   );
 };
+
+export default memo(LocationMask);

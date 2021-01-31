@@ -4,7 +4,7 @@ import { GoogleMap, LoadScript } from '@react-google-maps/api';
 import { GOOGLE_MAPS_API_KEY } from '../../constants';
 import { useMyAddressLookup } from '../../services';
 
-export const Map = ({ children }: { children: React.ReactNode }) => {
+const Map = ({ children }: { children: React.ReactNode }) => {
   const containerStyle = {
     width: '400px',
     height: '400px'

@@ -1,1 +1,3 @@
-export * from './LocationMask';
+import LocationMask from './LocationMask';
+
+export { LocationMask };
