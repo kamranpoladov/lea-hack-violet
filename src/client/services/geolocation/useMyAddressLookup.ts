@@ -1,17 +1,22 @@
-import { LatLngLiteral } from '@googlemaps/google-maps-services-js';
+import {
+  AddressComponent,
+  LatLngLiteral
+} from '@googlemaps/google-maps-services-js';
 import { useQuery } from 'react-query';
 import { QUERY_KEYS } from '../../constants';
 import { addressLookup } from './useAddressLookup';
 import { getCurrentGeolocation } from './useGetCurrentLocation';
 
-const myAddressLookup = async () => {
+type MyAdress = { latlng: LatLngLiteral; address: AddressComponent[][] };
+
+const myAddressLookup = async (): Promise<MyAdress> => {
   const { coords } = await getCurrentGeolocation();
   const latlng: LatLngLiteral = {
     lat: coords.latitude,
     lng: coords.longitude
   };
 
-  return await addressLookup(latlng);
+  return { latlng, address: await addressLookup(latlng) };
 };
 
 export const useMyAddressLookup = () =>

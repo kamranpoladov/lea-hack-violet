@@ -2,9 +2,9 @@ import { memo } from 'react';
 import { GoogleMap, LoadScript } from '@react-google-maps/api';
 
 import { GOOGLE_MAPS_API_KEY } from '../../constants';
-import { useMyAddressLookup } from '../../services/';
+import { useMyAddressLookup } from '../../services';
 
-export const MapComponent = () => {
+export const Map = ({ children }: { children: React.ReactNode }) => {
   const containerStyle = {
     width: '400px',
     height: '400px'
@@ -15,16 +15,22 @@ export const MapComponent = () => {
   if (!myAddress || isFetching) return null;
 
   // !isFetching && ..., but memo() throws an error
-  return <>{myAddress.flat().map(address => address.long_name)}</>;
-  /*isFetching ? null : (
+  return (
     <LoadScript googleMapsApiKey={GOOGLE_MAPS_API_KEY}>
       <GoogleMap
         mapContainerStyle={containerStyle}
-        center={latlng}
+        options={{
+          fullscreenControl: false,
+          streetViewControl: false,
+          zoomControl: false
+        }}
+        center={myAddress.latlng}
         zoom={10}
-      ></GoogleMap>
+      >
+        {children}
+      </GoogleMap>
     </LoadScript>
-  );*/
+  );
 };
 
-export default memo(MapComponent);
+export default memo(Map);
