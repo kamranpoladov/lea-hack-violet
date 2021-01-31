@@ -18,4 +18,6 @@ export type Host = {
   tags: HostTags[];
   location: LatLngLiteral;
   gender: Gender;
+  Icon: () => JSX.Element;
+  profileColor: string;
 };

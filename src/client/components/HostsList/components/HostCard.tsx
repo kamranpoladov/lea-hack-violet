@@ -11,7 +11,6 @@ import { useCalculateDistance } from '../hooks';
 import { useState } from 'react';
 import { HostCardOverview } from './HostCardOverview';
 import { HostCardFull } from './HostCardFull';
-import { useRandomProfilePicture } from '../hooks/useRandomProfilePicture';
 
 type HostCardProps = {
   host: Host;
@@ -26,7 +25,6 @@ const useStyles = makeStyles(theme =>
     profile: {
       width: '130px',
       height: '110px',
-      backgroundColor: '#BED7AA',
       position: 'absolute',
       borderRadius: '10px',
       zIndex: 1,
@@ -44,7 +42,7 @@ export const HostCard = ({ host }: HostCardProps) => {
 
   const distance = useCalculateDistance(host.location);
 
-  const HostProfileIcon = useRandomProfilePicture();
+  const ProfileIcon = host.Icon;
 
   const handleCollapse = () => {
     setIsCollapsed(prev => !prev);
@@ -54,9 +52,13 @@ export const HostCard = ({ host }: HostCardProps) => {
 
   return (
     <Box className={styles.root}>
-      <Card className={styles.profile} onClick={handleCollapse}>
+      <Card
+        className={styles.profile}
+        style={{ backgroundColor: host.profileColor }}
+        onClick={handleCollapse}
+      >
         <CardContent>
-          <HostProfileIcon />
+          <ProfileIcon />
         </CardContent>
       </Card>
       <Collapse in={!isCollapsed}>
