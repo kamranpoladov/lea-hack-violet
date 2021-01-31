@@ -17,14 +17,15 @@ function MapComponent() {
   // New York
   const latlng: LatLngLiteral = {
     lat: geolocation?.coords.latitude || 40.47,
-    lng: geolocation?.coords.longitude || -73.57,
+    lng: geolocation?.coords.longitude || -73.57
   };
 
+  console.log(JSON.stringify(geolocation));
+
   const { data: addressComponents } = useAddressLookup(latlng);
-  console.log(addressComponents);
 
   // !isFetching && ..., but memo() throws an error
-  return (isFetching ? null :
+  return null; /*isFetching ? null : (
     <LoadScript googleMapsApiKey={GOOGLE_MAPS_API_KEY}>
       <GoogleMap
         mapContainerStyle={containerStyle}
@@ -32,7 +33,7 @@ function MapComponent() {
         zoom={10}
       ></GoogleMap>
     </LoadScript>
-  );
+  );*/
 }
 
 export default memo(MapComponent);
