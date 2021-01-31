@@ -1,9 +1,9 @@
 import { Route, Switch } from 'react-router-dom';
+import { MapComponent } from './components';
 import { ROUTES } from './constants/routes';
-import { TestComponent } from './components';
 
 export const Root = () => (
   <Switch>
-    <Route path={ROUTES.ROOT} component={TestComponent} />
+    <Route path={ROUTES.ROOT} component={MapComponent} />
   </Switch>
 );
