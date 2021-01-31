@@ -19,7 +19,7 @@ type HostCardProps = {
 const useStyles = makeStyles(theme =>
   createStyles({
     root: {
-      margin: theme.spacing(6),
+      marginBottom: theme.spacing(6),
       width: 'fit-content'
     },
     profile: {

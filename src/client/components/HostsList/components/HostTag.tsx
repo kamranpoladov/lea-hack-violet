@@ -28,10 +28,10 @@ const useStyles = makeStyles(theme =>
       flexWrap: 'wrap'
     },
     icon: {
-      fontSize: theme.spacing(2)
+      fontSize: theme.spacing(1.5)
     },
     text: {
-      fontSize: theme.spacing(2),
+      fontSize: theme.spacing(1.5),
       marginLeft: theme.spacing(1)
     }
   })

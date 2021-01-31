@@ -54,9 +54,15 @@ const useStyles = makeStyles(theme =>
       lineHeight: '12px'
     },
     actions: {
+      display: 'flex',
+      justifyContent: 'center'
+    },
+    action: {
       backgroundColor: theme.palette.common.white,
       boxShadow: '4px 3px 4px rgba(58, 56, 56, 0.31)',
       borderRadius: '5px',
+      height: theme.spacing(2.5),
+      marginBottom: theme.spacing(1),
       color: theme.palette.primary.main,
       '&:hover': {
         color: theme.palette.common.white
@@ -82,9 +88,9 @@ export const HostCardFull = ({ host, distance }: HostCardFullProps) => {
         </Box>
         <Typography className={styles.misc}>{distance}</Typography>
       </CardContent>
-      <CardActions>
-        <Button className={styles.actions}>Book</Button>
-        <Button className={styles.actions}>Message</Button>
+      <CardActions className={styles.actions}>
+        <Button className={styles.action}>Book</Button>
+        <Button className={styles.action}>Message</Button>
       </CardActions>
     </Card>
   );
