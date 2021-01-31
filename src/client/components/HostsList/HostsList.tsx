@@ -1,18 +1,15 @@
 import { useMockHosts } from './hooks';
+import { Box } from '@material-ui/core';
+import { HostCard } from './components';
 
 export const HostsList = () => {
-  const hosts = useMockHosts();
+  const hosts = useMockHosts(10);
 
   return (
-    <div>
+    <Box>
       {hosts.map((host, i) => (
-        <div key={i}>
-          <p>Name: {host.name}</p>
-          <p>Description: {host.description}</p>
-          <p>Tags: {host.tags.map(tag => tag.toString() + ' ')}</p>
-          <br />
-        </div>
+        <HostCard key={i} host={host} />
       ))}
-    </div>
+    </Box>
   );
 };

@@ -1,8 +1,10 @@
 import faker from 'faker';
 import { LoremIpsum } from 'lorem-ipsum';
-import { Host, HostTags } from '../../../../types';
+import { rand } from '../../../../server/utils';
+import { Host } from '../../../../types';
+import { useRandomTags } from './useRandomTags';
 
-export const useMockHosts = () => {
+export const useMockHosts = (amount: number) => {
   const lorem = new LoremIpsum({
     sentencesPerParagraph: {
       min: 2,
@@ -13,13 +15,20 @@ export const useMockHosts = () => {
       max: 10
     }
   });
-  const hosts = Array(10)
+
+  const hostTags = useRandomTags(amount);
+
+  const hosts = Array(amount)
     .fill(0)
-    .map(() => {
+    .map((_, i) => {
       const host: Host = {
         name: faker.name.findName(),
         description: lorem.generateParagraphs(1),
-        tags: [HostTags.KID_FRIENDLY, HostTags.WIFI]
+        location: {
+          lat: rand(50.869, 50.8699),
+          lng: rand(4.7, 4.79)
+        },
+        tags: hostTags[i]
       };
       return host;
     });

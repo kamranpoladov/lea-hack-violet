@@ -4,7 +4,7 @@ import { ROUTES } from './constants/routes';
 
 export const Root = () => (
   <Switch>
-    <Route exact path={ROUTES.ROOT} component={MapComponent} />
+    <Route exact path={ROUTES.ROOT} component={() => <>Map</>} />
     <Route exact path={ROUTES.HOSTS} component={HostsList} />
   </Switch>
 );

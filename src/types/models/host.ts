@@ -1,3 +1,5 @@
+import { LatLngLiteral } from '@googlemaps/google-maps-services-js';
+
 export enum HostTags {
   KID_FRIENDLY = 'Kid friendly',
   SINGLE_ROOM = 'Single room',
@@ -9,4 +11,5 @@ export type Host = {
   name: string;
   description: string;
   tags: HostTags[];
+  location: LatLngLiteral;
 };
