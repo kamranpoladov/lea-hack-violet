@@ -4,6 +4,7 @@ import { useGetCurrentLocation } from '../../services/geolocation';
 import { GOOGLE_MAPS_API_KEY } from '../../constants/apiKeyDumbass';
 import { useAddressLookup } from '../../services/geolocation/useAddressLookup';
 import { LatLngLiteral } from '@googlemaps/google-maps-services-js';
+import { log } from 'debug';
 
 export const MapComponent = () => {
   const containerStyle = {
@@ -20,7 +21,7 @@ export const MapComponent = () => {
   };
 
   const { data: addressComponents } = useAddressLookup(latlng);
-  console.log(addressComponents);
+  log(addressComponents);
 
   // !isFetching && ..., but memo() throws an error
   return isFetching ? null : (
