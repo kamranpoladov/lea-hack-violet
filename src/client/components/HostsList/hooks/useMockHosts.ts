@@ -1,6 +1,6 @@
 import faker from 'faker';
 import { LoremIpsum } from 'lorem-ipsum';
-import { rand } from '../../../../server/utils';
+import { rand } from '../../../../utils';
 import { Gender, Host } from '../../../../types';
 import { useGetCurrentLocation } from '../../../services';
 import { Afro, Bun, Short } from '../components/profilePictures';

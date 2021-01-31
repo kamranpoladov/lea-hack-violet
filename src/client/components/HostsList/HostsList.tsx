@@ -1,28 +1,15 @@
 import { useMockHosts } from './hooks';
-import {
-  Card,
-  CardHeader,
-  createStyles,
-  IconButton,
-  makeStyles
-} from '@material-ui/core';
+import { Card, CardHeader, IconButton } from '@material-ui/core';
 import { FilterList } from '@material-ui/icons';
 import { HostCard } from './components';
 
-const useStyles = makeStyles(() =>
-  createStyles({
-    root: {}
-  })
-);
-
 export const HostsList = () => {
-  const styles = useStyles();
   const hosts = useMockHosts(10);
 
   if (!hosts) return null;
 
   return (
-    <Card elevation={1} className={styles.root}>
+    <Card elevation={1}>
       <CardHeader
         action={
           <IconButton>

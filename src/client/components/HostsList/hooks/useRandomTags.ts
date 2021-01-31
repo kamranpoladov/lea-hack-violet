@@ -1,4 +1,4 @@
-import { rand } from '../../../../server/utils';
+import { rand } from '../../../../utils';
 import { HostTags } from '../../../../types';
 
 export const useRandomTags = (hostsAmount: number) => {

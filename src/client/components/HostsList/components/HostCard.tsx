@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme =>
   createStyles({
     root: {
       marginBottom: theme.spacing(6),
-      width: 'fit-content'
+      width: '350px'
     },
     profile: {
       width: '130px',
