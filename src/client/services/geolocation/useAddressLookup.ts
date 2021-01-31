@@ -8,9 +8,9 @@ import {
 import { QUERY_KEYS } from '../../constants';
 import { GOOGLE_MAPS_API_KEY } from '../../constants/apiKeyDumbass';
 
-async function addressLookup(
+export const addressLookup = async (
   latlng: LatLngLiteral
-): Promise<AddressComponent[][]> {
+): Promise<AddressComponent[][]> => {
   const client = new Client();
 
   const {
@@ -20,7 +20,7 @@ async function addressLookup(
   });
 
   return geocodeResults.map(({ address_components }) => address_components);
-}
+};
 
 export const useAddressLookup = (latlng: LatLngLiteral) =>
   useQuery(QUERY_KEYS.ADDRESS_LOOKUP, () => addressLookup(latlng));
