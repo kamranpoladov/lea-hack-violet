@@ -41,7 +41,6 @@ const useStyles = makeStyles(theme =>
       overflow: 'hidden',
       marginBottom: '13px'
     },
-    cardFooter: {},
     distance: {
       fontSize: '10px',
       fontWeight: 'bold',
@@ -63,7 +62,7 @@ export const HostCardOverview = ({
         <Typography noWrap className={styles.description}>
           {description}
         </Typography>
-        <Box className={styles.cardFooter}>
+        <Box>
           <Typography className={styles.distance}>{distance}</Typography>
         </Box>
       </CardContent>
