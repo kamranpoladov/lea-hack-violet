@@ -6,7 +6,7 @@ import {
 import { DirectionsRenderer } from '@react-google-maps/api';
 import React, { memo, useState } from 'react';
 import { Map } from '../Map';
-import { useDirections } from './useDirections';
+import { useDirections } from './hooks';
 
 const LocationMask = () => {
   const [origin, setOrigin] = useState<LatLngLiteral>({

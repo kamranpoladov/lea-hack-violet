@@ -1,22 +1,20 @@
 import { useQuery } from 'react-query';
 import {
-  Client,
   DirectionsResponse,
   LatLngLiteral,
   TravelMode
 } from '@googlemaps/google-maps-services-js';
 
-import { QUERY_KEYS } from '../../constants';
-import { GOOGLE_MAPS_API_KEY } from '../../constants/apiKeyDumbass';
+import { QUERY_KEYS } from '../../../constants';
+import { GOOGLE_MAPS_API_KEY } from '../../../constants/apiKeyDumbass';
+import { GoogleMapsClient } from '../../../utils';
 
 export const directions = async (
   origin: LatLngLiteral,
   destination: LatLngLiteral,
   travelMode: TravelMode
 ): Promise<DirectionsResponse> => {
-  const client = new Client();
-
-  const directions = await client.directions({
+  const directions = await GoogleMapsClient.directions({
     params: { origin, destination, mode: travelMode, key: GOOGLE_MAPS_API_KEY }
   });
 
