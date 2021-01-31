@@ -1,7 +1,6 @@
 import { memo } from 'react';
 import { GoogleMap, LoadScript } from '@react-google-maps/api';
 
-import { GOOGLE_MAPS_API_KEY } from '../../constants';
 import { useMyAddressLookup } from '../../services';
 
 const Map = ({ children }: { children: React.ReactNode }) => {
@@ -16,7 +15,9 @@ const Map = ({ children }: { children: React.ReactNode }) => {
 
   // !isFetching && ..., but memo() throws an error
   return (
-    <LoadScript googleMapsApiKey={GOOGLE_MAPS_API_KEY}>
+    <LoadScript
+      googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY || ''}
+    >
       <GoogleMap
         mapContainerStyle={containerStyle}
         options={{

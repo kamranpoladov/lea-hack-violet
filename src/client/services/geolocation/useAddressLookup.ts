@@ -5,7 +5,6 @@ import {
 } from '@googlemaps/google-maps-services-js';
 
 import { QUERY_KEYS } from '../../constants';
-import { GOOGLE_MAPS_API_KEY } from '../../constants/apiKeyDumbass';
 import { GoogleMapsClient } from '../../utils';
 
 export const addressLookup = async (
@@ -14,7 +13,7 @@ export const addressLookup = async (
   const {
     data: { results: geocodeResults }
   } = await GoogleMapsClient.reverseGeocode({
-    params: { latlng, key: GOOGLE_MAPS_API_KEY }
+    params: { latlng, key: process.env.REACT_APP_GOOGLE_MAPS_API_KEY || '' }
   });
 
   return geocodeResults.map(({ address_components }) => address_components);

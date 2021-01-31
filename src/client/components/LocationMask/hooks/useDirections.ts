@@ -6,7 +6,6 @@ import {
 } from '@googlemaps/google-maps-services-js';
 
 import { QUERY_KEYS } from '../../../constants';
-import { GOOGLE_MAPS_API_KEY } from '../../../constants/apiKeyDumbass';
 import { GoogleMapsClient } from '../../../utils';
 
 export const directions = async (
@@ -15,7 +14,12 @@ export const directions = async (
   travelMode: TravelMode
 ): Promise<DirectionsResponse> => {
   const directions = await GoogleMapsClient.directions({
-    params: { origin, destination, mode: travelMode, key: GOOGLE_MAPS_API_KEY }
+    params: {
+      origin,
+      destination,
+      mode: travelMode,
+      key: process.env.REACT_APP_GOOGLE_MAPS_API_KEY || ''
+    }
   });
 
   return directions;
