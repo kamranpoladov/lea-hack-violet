@@ -2,10 +2,16 @@ import faker from 'faker';
 import { LoremIpsum } from 'lorem-ipsum';
 import { rand } from '../../../../server/utils';
 import { Gender, Host } from '../../../../types';
+import { useGetCurrentLocation } from '../../../services';
 import { Afro, Bun, Short } from '../components/profilePictures';
 import { useRandomTags } from './useRandomTags';
 
 export const useMockHosts = (amount: number) => {
+  const { data: location } = useGetCurrentLocation();
+  const hostTags = useRandomTags(amount);
+
+  if (!location) return null;
+
   const lorem = new LoremIpsum({
     sentencesPerParagraph: {
       min: 2,
@@ -17,9 +23,12 @@ export const useMockHosts = (amount: number) => {
     }
   });
 
-  const hostTags = useRandomTags(amount);
   const profilePictures = [Bun, Short, Afro];
   const profileColors = ['#BED7AA', '#E0BBE1', '#C0CEFF'];
+
+  const {
+    coords: { latitude, longitude }
+  } = location;
 
   const hosts = Array(amount)
     .fill(0)
@@ -29,8 +38,8 @@ export const useMockHosts = (amount: number) => {
         name: faker.name.findName(),
         description: lorem.generateParagraphs(1),
         location: {
-          lat: rand(50.869, 50.8699),
-          lng: rand(4.7, 4.79)
+          lat: rand(latitude - 0.01, latitude + 0.01),
+          lng: rand(longitude - 0.01, longitude + 0.01)
         },
         tags: hostTags[i],
         gender: Math.random() > 0.5 ? Gender.M : Gender.F,

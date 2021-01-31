@@ -7,4 +7,6 @@ export const getCurrentGeolocation = async (): Promise<GeolocationPosition> =>
   });
 
 export const useGetCurrentLocation = () =>
-  useQuery(QUERY_KEYS.CURRENT_LOCATION, () => getCurrentGeolocation());
+  useQuery(QUERY_KEYS.CURRENT_LOCATION, () => getCurrentGeolocation(), {
+    staleTime: Infinity
+  });
