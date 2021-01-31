@@ -1,4 +1,4 @@
-import { useMockHosts } from './hooks';
+import { useMockHosts } from '../../services';
 import { Card, CardHeader, IconButton } from '@material-ui/core';
 import { FilterList } from '@material-ui/icons';
 import { HostCard } from './components';

@@ -1,7 +1,7 @@
 import { memo } from 'react';
-import { GoogleMap, LoadScript } from '@react-google-maps/api';
+import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 
-import { useMyAddressLookup } from '../../services';
+import { useMockHosts, useMyAddressLookup } from '../../services';
 
 const Map = ({ children }: { children?: React.ReactNode }) => {
   const containerStyle: React.CSSProperties = {
@@ -10,6 +10,8 @@ const Map = ({ children }: { children?: React.ReactNode }) => {
   };
 
   const { data: myAddress, isFetching } = useMyAddressLookup();
+
+  const hosts = useMockHosts(10);
 
   if (!myAddress || isFetching) return null;
 
@@ -25,8 +27,14 @@ const Map = ({ children }: { children?: React.ReactNode }) => {
           zoomControl: false
         }}
         center={myAddress.latlng}
-        zoom={10}
+        zoom={13}
       >
+        {hosts?.map((host, i) => (
+          <Marker
+            key={i}
+            position={{ lat: host.location.lat, lng: host.location.lng }}
+          />
+        ))}
         {children}
       </GoogleMap>
     </LoadScript>

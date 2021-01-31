@@ -1,10 +1,14 @@
 import faker from 'faker';
 import { LoremIpsum } from 'lorem-ipsum';
-import { rand } from '../../../../utils';
-import { Gender, Host } from '../../../../types';
-import { useGetCurrentLocation } from '../../../services';
-import { Afro, Bun, Short } from '../components/profilePictures';
-import { useRandomTags } from './useRandomTags';
+import { rand } from '../../../utils';
+import { Gender, Host } from '../../../types';
+import { useGetCurrentLocation } from '..';
+import {
+  Afro,
+  Bun,
+  Short
+} from '../../components/HostsList/components/profilePictures';
+import { useRandomTags } from '../../components/HostsList/hooks/useRandomTags';
 
 export const useMockHosts = (amount: number) => {
   const { data: location } = useGetCurrentLocation();
